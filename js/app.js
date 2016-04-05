@@ -1,13 +1,9 @@
-(function () {
+'use strict';
 
-	'use strict';
+var eventsApp = angular.module('eventsApp', ['ngSanitize']);
 
-	var app = angular.module('app',[]);
-	
-	app.controller('BaseController', ['$scope', BaseController]);
+eventsApp.controller('BaseController', ['$scope', BaseController]);
 
- 	function BaseController($scope){
- 		$scope.HelloWorld = 'hello world!';
-	}
-
-})();
+function BaseController($scope) {
+    $scope.HelloWorld = 'hello world!';
+}
