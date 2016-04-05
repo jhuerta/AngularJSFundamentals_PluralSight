@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eventsApp">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="./lib/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="./css/app.css">
+	</head>
+	<body ng-app="app" ng-cloak>
+		<div class="container">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<ul class="nav">					</ul>
+				</div>
+			</div>
+			
+			<div ng-controller="EventController">
+			<img ng-src="{{event.imageURL}}" alt"{{event.name}}" />
+				<div class="row">
+					<div class="span1">
+						<h2>ng-bind: <span ng-bind="event.name"></span><h2>
+						<h2>ng-bind-template: <span ng-bind-template="{{event.name}} - {{event.date}}"></span><h2>
+						<h2>ng-bind-html: <span ng-style="redStyle" ng-bind-html="snippet">You should not see this</span><h2>
+					</div>
+
+					
+
+				</div>
+				<div class="row">
+					<div class="span3">
+						<div><strong>{{event.date}}</strong></div>
+						<div><strong>{{event.time}}</strong></div>
+					</div>
+					<div class="span3">
+						<address>
+							<div><strong>Address</strong></div>
+							<div>{{event.location.address}},{{event.location.city}} ({{event.location.province}})</div>
+						</address>
+					</div>
+				</div>
+
+				<hr />
+				<h3 ng-show="showThis" ng-class-odd="'rowOddClass'" ng-class-even="'rowEvenClass'" ng-class="rowClass" >Show this</h3>
+				Somethis is hidden between the apostroph : "<h3 ng-hide="showThis">Hide this</h3>"
+
+				<hr />
+				Non bindable: 1+2 = <span ng-non-bindable='true'>{{1 + 2}}</span> <br/>
+				bindable: 1+2 = <span>{{1 + 2}}</span>
+
+				<hr />
+				<div class="btn btn-warning" ng-disabled='false'> Enabled</div>
+
+				<div class="btn btn-warning" ng-disabled='true'> Disabled</div>
+								<hr />
+
+				<h3>Sessions</h3>
+				<ul class="list-unstyled">
+					<li ng-repeat="session in event.sessions" class=" ng-class="well" ng-class-odd="'rowOddClass'" ng-class-even="'rowEvenClass'">
+					<div class="row">
+						<div class="well">
+							<div>{{session.name}}</div>
+							<div>{{session.creatorName}}</div>
+							<div>{{session.level}}</div>
+							
+							<div class="btn btn-primary btn-xs" ng-click="upVoteSession(session)">
+								<span class="glyphicon glyphicon-chevron-up"></span>
+							</div>
+
+							Votes: {{session.upVoteCount}}
+
+							<div class="btn btn-primary btn-xs" ng-click="downVoteSession(session)">
+								<span class="glyphicon glyphicon-chevron-down"></span>
+							</div>
+						</div>
+					</div>
+						
+					</li>
+				</ul>
+
+
+
+			</div>
+		</div>
+		
+		
+		<script src="./lib/jquery/jquery-2.2.1.js"></script>
+		<script src="./lib/angular/angular.js"></script>
+		<script src="./lib/angular/angular-sanitize.js"></script>
+		<script src="./lib/bootstrap/js/bootstrap.js"></script>
+		<script src="./js/app.js"></script>
+		<script src="./js/directives.js"></script>
+		<script src="./js/filters.js"></script>
+		<script src="./js/controllers/EventController.js"></script>
+	</body>
+</html>
