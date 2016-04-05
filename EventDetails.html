@@ -106,7 +106,7 @@
 				<li ng-repeat="session in event.sessions | orderBy:sortorder  | filter:query | limitTo:2 " class=" ng-class="well" ng-class-odd="'rowOddClass'" ng-class-even="'rowEvenClass'">
 					<div class="row">
 						<div class="well">
-							<div>{{session.name}}</div>
+							<div>{{session.name | addingSomeString: "ONE":"TOW"}}</div>
 							<div>{{session.creatorName}}</div>
 							<div>{{session.level}}</div>
 							
