@@ -20,6 +20,9 @@ function EventController($scope) {
 	$scope.redStyle = {color:'red'};
 	$scope.snippet = '<span style="color:red">The sanitized replacement</span>';
 	$scope.showThis = true;
+	$scope.sortorder = '-upVoteCount';
+
+	
 	$scope.rowEvenClass = 'rowEvenClass';
 	$scope.rowOddClass = 'rowEvenClass';
 	$scope.rowClass = 'rowClass';
@@ -45,8 +48,18 @@ function EventController($scope) {
             upVoteCount: 0
         }, {
             name: 'Well behaved controllers',
-            creatorName: 'Michael Jordan',
-            level: 'hight',
+            creatorName: 'Mdddddddddddd',
+            level: 'high',
+            upVoteCount: 0
+        }, {
+            name: 'aaaaaaaaaaaaaaa',
+            creatorName: 'eeeeeeeee',
+            level: 'high',
+            upVoteCount: 0
+        }, {
+            name: 'bbbbbbbbbb',
+            creatorName: 'cccccc',
+            level: 'high',
             upVoteCount: 0
         }]
     };
