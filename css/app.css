@@ -15,3 +15,7 @@ color: blue;}
 
 
 
+input.ng-dirty.ng-invalid
+{
+	border: solid 5px red;
+}
