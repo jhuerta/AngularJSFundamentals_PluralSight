@@ -1,8 +1,23 @@
-eventsApp.factory('eventData', EventData);
+eventsApp.factory('eventData', ['$http', '$resource', EventData]);
 
-function EventData() {
+function EventData(http, resource) {
+
+var iisURL = 'data/event/:id';
+var mockableURL = 'http://demo9135925.mockable.io/events';
+
+    var dataResource = resource(mockableURL, {
+        id: '@id'
+    });
+
     return {
-        event: {
+        saveEentWithResourceService: SaveEentWithResourceService,
+        getEventWithResourceService: GetEventWithResourceService,
+        getEventWithHttpService: GetEventWithHttpService,
+        getEventWithHardCodeValues: GetEventWithHardCodeValues
+    };
+
+    function GetEventWithHardCodeValues() {
+        return {
             name: 'Angular Boot Camp',
             date: '1/1/2013',
             time: '10:30 am',
@@ -43,6 +58,33 @@ function EventData() {
                 upVoteCount: 0,
                 dificulty: 2
             }]
-        }
-    };
+        };
+    }
+
+    function SaveEentWithResourceService(event, onSuccess, onError) {
+        var theEvent = {
+            id: event.id,
+            eventData : event
+        };
+
+
+        dataResource.save(theEvent, onSuccess, onError);
+    }
+
+    function GetEventWithResourceService(onSuccess, onError) {
+
+        dataResource.get({
+            id: 1
+        }, onSuccess, onError);
+        /*).$promise.then(onSuccess, onError);*/
+        /*).$promise.then(onSuccess).catch(onError);*/
+    }
+
+    function GetEventWithHttpService(onSuccess, onError) {
+        return http({
+            method: 'GET',
+            url: 'data/event/1'
+            //url: 'http://demo9135925.mockable.io/events'
+        }).success(onSuccess).error(onError);
+    }
 }

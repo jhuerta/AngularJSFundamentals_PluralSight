@@ -1,8 +1,8 @@
 'use strict';
 
-eventsApp.controller('EventController', ['$scope', 'eventData', EventController]);
+eventsApp.controller('EventController', ['$scope', 'eventData','$log', EventController]);
 
-function EventController(scope, eventData) {
+function EventController(scope, eventData, log) {
 	scope.downVoteSession = DownVoteSession;
 	scope.upVoteSession = UpVoteSession;
 
@@ -26,5 +26,20 @@ function EventController(scope, eventData) {
 	scope.rowEvenClass = 'rowEvenClass';
 	scope.rowOddClass = 'rowEvenClass';
 	scope.rowClass = 'rowClass';
-    scope.event = eventData.event;
+    //scope.event = eventData.getEventRes();
+    
+    eventData.getEventWithResourceService(success, error);
+    eventData.getEventWithHttpService(success,error);
+
+    function success(data, status, headers, config)
+    {
+    	log.warn(data);
+    	log.warn(status);
+    	scope.event = data;
+    }
+
+    function error(data, status, headers, config)
+    {
+    	log.warn(data, status, headers, config);
+    }
 }

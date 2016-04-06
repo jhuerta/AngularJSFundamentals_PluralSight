@@ -1,24 +1,30 @@
 'use strict';
 
-eventsApp.controller('EditEventController', ['$scope', EditEventController]);
+eventsApp.controller('EditEventController', ['$scope', 'eventData','$log', EditEventController]);
 
-function EditEventController($scope) {
+function EditEventController(scope, eventData, log) {
 
-	$scope.saveEvent = SaveEvent;
-	$scope.cancelEvent = CancelEvent;
+    scope.saveEvent = SaveEvent;
+    scope.cancelEvent = CancelEvent;
 
-	function SaveEvent(event, form)
-	{
-		console.log(form);
-		if(form.$valid)
-		{
-				alert(event.name);
-		}
-	}
+    function SaveEvent(event, form) {
 
-		function CancelEvent()
-	{
-		window.location = "./EventDetails.html";
-	}
+        console.log(form);
+        if (form.$valid) {
+            eventData.saveEentWithResourceService(event, success, error);
+        }
+    }
+
+    function CancelEvent() {
+        window.location = "./EventDetails.html";
+    }
+
+    function success() {
+        log.warn('success');
+    }
+
+    function error() {
+        log.warn('error');
+    }
 
 }
