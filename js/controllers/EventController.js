@@ -25,8 +25,6 @@ function EventController(scope, eventData, log,anchorScroll) {
 
 	function ScrollToSession()
 	{
-		console.log("adfasdf");
-		console.log(anchorScroll());
 		anchorScroll();
 	}
 
@@ -40,8 +38,6 @@ function EventController(scope, eventData, log,anchorScroll) {
 
     function success(data, status, headers, config)
     {
-    	log.warn(data);
-    	log.warn(status);
     	scope.event = data;
     }
 

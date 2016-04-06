@@ -8,8 +8,6 @@ function EditEventController(scope, eventData, log) {
     scope.cancelEvent = CancelEvent;
 
     function SaveEvent(event, form) {
-
-        console.log(form);
         if (form.$valid) {
             eventData.saveEentWithResourceService(event, success, error);
         }

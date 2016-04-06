@@ -2,6 +2,7 @@
 
 var eventsApp = angular.module('eventsApp', ['ngSanitize','ngResource']);
 
+
 eventsApp.controller('BaseController', ['$scope', BaseController]);
 
 eventsApp.directive('toHtml', function() {
