@@ -1,12 +1,15 @@
-eventsApp.factory('eventData', ['$http', '$resource', EventData]);
+eventsApp.factory('eventData', ['$http', '$resource', 'sampleCache', EventData]);
 
-function EventData(http, resource) {
+function EventData(http, resource, theCache) {
 
 var iisURL = 'data/event/:id';
 var mockableURL = 'http://demo9135925.mockable.io/events';
 
     var dataResource = resource(mockableURL, {
         id: '@id'
+
+    },{
+        'get': { method:'GET', cache: false}
     });
 
     return {
@@ -72,6 +75,7 @@ var mockableURL = 'http://demo9135925.mockable.io/events';
     }
 
     function GetEventWithResourceService(onSuccess, onError) {
+        console.log('333333333333');
 
         dataResource.get({
             id: 1

@@ -32,9 +32,13 @@ function EventController(scope, eventData, log,anchorScroll) {
 	scope.rowEvenClass = 'rowEvenClass';
 	scope.rowOddClass = 'rowEvenClass';
 	scope.rowClass = 'rowClass';
+	scope.refresh = function()
+	{
+		eventData.getEventWithResourceService(success, error);
+	};
     
     eventData.getEventWithResourceService(success, error);
-    eventData.getEventWithHttpService(success,error);
+    //eventData.getEventWithHttpService(success,error);
 
     function success(data, status, headers, config)
     {
