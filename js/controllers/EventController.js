@@ -1,8 +1,8 @@
 'use strict';
 
-eventsApp.controller('EventController', ['$scope', 'eventData','$log', EventController]);
+eventsApp.controller('EventController', ['$scope', 'eventData','$log','$anchorScroll', EventController]);
 
-function EventController(scope, eventData, log) {
+function EventController(scope, eventData, log,anchorScroll) {
 	scope.downVoteSession = DownVoteSession;
 	scope.upVoteSession = UpVoteSession;
 
@@ -21,12 +21,19 @@ function EventController(scope, eventData, log) {
 	scope.snippet = '<span style="color:red">The sanitized replacement</span>';
 	scope.showThis = true;
 	scope.sortorder = '-upVoteCount';
+	scope.scrollToSession = ScrollToSession;
+
+	function ScrollToSession()
+	{
+		console.log("adfasdf");
+		console.log(anchorScroll());
+		anchorScroll();
+	}
 
 	
 	scope.rowEvenClass = 'rowEvenClass';
 	scope.rowOddClass = 'rowEvenClass';
 	scope.rowClass = 'rowClass';
-    //scope.event = eventData.getEventRes();
     
     eventData.getEventWithResourceService(success, error);
     eventData.getEventWithHttpService(success,error);

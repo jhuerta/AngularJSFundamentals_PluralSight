@@ -16,8 +16,15 @@
 		
 		<a href="./EditEventDetails.html" class="btn btn-info">Edit Event</a>
 
+		
+
 		<div ng-controller="EventController">
+	
+		<div class="btn btn-primary" ng-click="scrollToSession()">Scroll</div>
+
+		<div class="row">
 			<img ng-src="{{event.imageURL}}" alt"{{event.name}}" />
+			</div>
 			<div class="row">
 				<div class="span1">
 					<h2>ng-bind: <span ng-bind="event.name"></span><h2>
@@ -105,7 +112,11 @@
 						</select>
 
 			<ul class="list-unstyled">
-				<li ng-repeat="session in event.sessions | orderBy:sortorder  | filter:query | limitTo:50 " class=" ng-class="well" ng-class-odd="'rowOddClass'" ng-class-even="'rowEvenClass'">
+				<li ng-repeat="session in event.sessions | orderBy:sortorder  | filter:query | limitTo:50 " 
+					class=" ng-class="well" 
+					id="session{{session.id}}"
+					ng-class-odd="'rowOddClass'" 
+					ng-class-even="'rowEvenClass'">
 					<div class="row">
 						<div class="well">
 							<div>{{session.name | addingSomeString: "ONE":"TOW"}}</div>
