@@ -111,15 +111,16 @@
 							<div>{{session.name | addingSomeString: "ONE":"TOW"}}</div>
 							<div>{{session.creatorName}}</div>
 							<div>{{session.level}}</div>
-							<p to-html="session.dificulty | dificultyImage"></p>
+							<p to-html="session.dificulty"></p>
 
-							<img ng-src="{{session.dificulty | dificultyImageFileName}}" alt="session.name">
+							
 
 
 							<div class="btn btn-primary btn-xs" ng-click="upVoteSession(session)">
 								<span class="glyphicon glyphicon-chevron-up"></span>
 							</div>
-							Votes: {{session.upVoteCount}}
+							Votes: <p to-html="session.upVoteCount | dificultyImage"></p>
+							<img ng-src="{{session.upVoteCount | dificultyImageFileName}}" alt="session.name">
 							<div class="btn btn-primary btn-xs" ng-click="downVoteSession(session)">
 								<span class="glyphicon glyphicon-chevron-down"></span>
 							</div>
@@ -140,5 +141,6 @@
 	<script src="./js/directives.js"></script>
 	<script src="./js/filters.js"></script>
 	<script src="./js/controllers/EventController.js"></script>
+	<script src="./js/services/EventData.js"></script>
 </body>
 </html>
