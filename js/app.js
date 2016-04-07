@@ -1,6 +1,6 @@
 'use strict';
 
-var eventsApp = angular.module('eventsApp', ['ngSanitize','ngResource','tmh.dynamicLocale']);
+var eventsApp = angular.module('eventsApp', ['ngSanitize','ngResource','tmh.dynamicLocale','ngCookies']);
 
 
 eventsApp.controller('BaseController', ['$scope', BaseController]);
