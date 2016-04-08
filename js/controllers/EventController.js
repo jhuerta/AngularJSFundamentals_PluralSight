@@ -4,10 +4,10 @@ eventsApp.controller('EventController', ['$scope', 'eventData','$log','$anchorSc
 
 
 function EventController(scope, eventData, log,anchorScroll, routeParams, route) {
-	console.log('1');
+
 	scope.downVoteSession = DownVoteSession;
 	scope.upVoteSession = UpVoteSession;
-console.log('2');
+
 	function DownVoteSession(session)
 	{
 		session.upVoteCount--;
