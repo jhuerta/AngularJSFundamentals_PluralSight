@@ -11,6 +11,7 @@ function appConfig(routing) {
     });
 
     routing.when('/events', {
+    	customParams: 'nothing in particular',
         templateUrl: 'templates/EventList.html',
         controller: 'EventListController'
     });

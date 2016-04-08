@@ -1,9 +1,13 @@
 'use strict';
 
-eventsApp.controller('EventListController', ['$scope', '$location','$log','eventData','$window', EventListController]);
+eventsApp.controller('EventListController', ['$scope', '$location','$log','eventData','$window','$route', EventListController]);
 
-function EventListController(scope, location, log, eventData,window) {
+function EventListController(scope, location, log, eventData,window, route) {
 
+    console.log("From route confige:" + route.current.customParams);
+    console.log("From url 'fromURL':" + route.current.params.fromURL);
+    console.log("Route values':" + route.current.params.eventId);
+    console.log("Route values':" + route.current.pathParams.eventId);
 	scope.loadEvent = LoadEvent;
 
 	function LoadEvent(eventId)

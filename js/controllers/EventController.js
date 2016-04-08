@@ -1,8 +1,9 @@
 'use strict';
 
-eventsApp.controller('EventController', ['$scope', 'eventData','$log','$anchorScroll', '$routeParams', EventController]);
+eventsApp.controller('EventController', ['$scope', 'eventData','$log','$anchorScroll', '$routeParams','$route', EventController]);
 
-function EventController(scope, eventData, log,anchorScroll, routeParams) {
+
+function EventController(scope, eventData, log,anchorScroll, routeParams, route) {
 	console.log('1');
 	scope.downVoteSession = DownVoteSession;
 	scope.upVoteSession = UpVoteSession;
@@ -17,6 +18,20 @@ console.log('2');
 		session.upVoteCount++;
 	}
 
+
+	scope.reload = Reload;
+
+	function Reload()
+	{
+		console.log(route.current.params);
+		console.log(route.current.pathParams);
+
+		console.log(route.current.params.eventId);
+		console.log(route.current.pathParams.eventId);
+
+		route.reload();
+
+	}
 
 	scope.redStyle = {color:'red'};
 	scope.snippet = '<span style="color:red">The sanitized replacement</span>';
