@@ -3,20 +3,22 @@ eventsApp.factory('eventData', ['$http', '$resource', 'sampleCache', EventData])
 function EventData(http, resource, theCache) {
 
 var iisURL = 'data/event/:id';
-var mockableURL = 'http://demo9135925.mockable.io/events';
+var mockableURL = 'http://demo9135925.mockable.io/events/:id';
 
     var dataResource = resource(mockableURL, {
         id: '@id'
 
     },{
         'get': { method:'GET', cache: false}
+        //'getAllEvents' : { method:'GET', cache: false, isArray:true}
     });
 
     return {
         saveEentWithResourceService: SaveEentWithResourceService,
         getEventWithResourceService: GetEventWithResourceService,
         getEventWithHttpService: GetEventWithHttpService,
-        getEventWithHardCodeValues: GetEventWithHardCodeValues
+        getEventWithHardCodeValues: GetEventWithHardCodeValues,
+        getAllEvents: GetAllEvents
     };
 
     function GetEventWithHardCodeValues() {
@@ -74,14 +76,17 @@ var mockableURL = 'http://demo9135925.mockable.io/events';
         dataResource.save(theEvent, onSuccess, onError);
     }
 
-    function GetEventWithResourceService(onSuccess, onError) {
-        console.log('333333333333');
-
+    function GetEventWithResourceService(eventId, onSuccess, onError) {
         dataResource.get({
-            id: 1
+            id: eventId
         }, onSuccess, onError);
-        /*).$promise.then(onSuccess, onError);*/
-        /*).$promise.then(onSuccess).catch(onError);*/
+    }
+
+    function GetAllEvents(onSuccess, onError)
+    {
+        dataResource.query({
+            id: 'allevents'
+        }, onSuccess, onError);
     }
 
     function GetEventWithHttpService(onSuccess, onError) {

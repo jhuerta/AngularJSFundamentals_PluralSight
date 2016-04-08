@@ -1,11 +1,12 @@
 'use strict';
 
-eventsApp.controller('EventController', ['$scope', 'eventData','$log','$anchorScroll', EventController]);
+eventsApp.controller('EventController', ['$scope', 'eventData','$log','$anchorScroll', '$routeParams', EventController]);
 
-function EventController(scope, eventData, log,anchorScroll) {
+function EventController(scope, eventData, log,anchorScroll, routeParams) {
+	console.log('1');
 	scope.downVoteSession = DownVoteSession;
 	scope.upVoteSession = UpVoteSession;
-
+console.log('2');
 	function DownVoteSession(session)
 	{
 		session.upVoteCount--;
@@ -32,12 +33,13 @@ function EventController(scope, eventData, log,anchorScroll) {
 	scope.rowEvenClass = 'rowEvenClass';
 	scope.rowOddClass = 'rowEvenClass';
 	scope.rowClass = 'rowClass';
-	scope.refresh = function()
+	scope.refresh = function(id)
 	{
-		eventData.getEventWithResourceService(success, error);
+		console.log(id);
+		eventData.getEventWithResourceService(id, success, error);
 	};
     
-    eventData.getEventWithResourceService(success, error);
+    eventData.getEventWithResourceService(routeParams.eventId, success, error);
     //eventData.getEventWithHttpService(success,error);
 
     function success(data, status, headers, config)
