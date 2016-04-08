@@ -1,7 +1,112 @@
 <a href="./EditEventDetails.html" class="btn btn-info">Edit Event</a>
-
-
 <div class="btn btn-primary" ng-click="reload()">Reload</div>
-
 <h1>ID: {{event.id}}</h1>
 <h1>Name: {{event.name}}</h1>
+<a href="./EditEventDetails.html" class="btn btn-info">Edit Event</a>
+<div>
+	
+	<div class="btn btn-primary" ng-click="scrollToSession()">Scroll</div>
+	<div class="btn btn-primary btn-xs" ng-click="refresh()">REFRESH DATA</div>
+	<div class="row">
+		<img ng-src="{{event.imageURL}}" alt"{{event.name}}" />
+	</div>
+	<div class="row">
+		<div class="span1">
+			<h2>ng-bind: <span ng-bind="event.name"></span><h2>
+			<h2>ng-bind-template: <span ng-bind-template="{{event.name}} - {{event.date}}"></span><h2>
+			<h2>ng-bind-html: <span ng-style="redStyle" ng-bind-html="snippet">You should not see this</span><h2>
+		</div>
+		
+	</div>
+	<div class="row">
+		<div class="span3">
+			<div><strong>{{event.date}}</strong></div>
+			<div><strong>{{event.time}}</strong></div>
+		</div>
+		<div class="span3">
+			<address>
+				<div><strong>Address</strong></div>
+				<div>{{event.location.address}},{{event.location.city}} ({{event.location.province}})</div>
+			</address>
+		</div>
+	</div>
+	<hr />
+	<h3 ng-show="showThis" ng-class-odd="'rowOddClass'" ng-class-even="'rowEvenClass'" ng-class="rowClass" >Show this</h3>
+	Somethis is hidden between the apostroph : "<h3 ng-hide="showThis">Hide this</h3>"
+	<hr />
+	Non bindable: 1+2 = <span ng-non-bindable='true'>{{1 + 2}}</span> <br/>
+	bindable: 1+2 = <span>{{1 + 2}}</span>
+	<hr />
+	<div class="btn btn-warning" ng-disabled='false'> Enabled</div>
+	<div class="btn btn-warning" ng-disabled='true'> Disabled</div>
+	
+	<hr />
+	<hr />
+	<h2>Expressions</h2>
+	Multiplying: 3 * 10: {{ 3*10}}<br>
+	Accessing arrays: {{["one","two","three","four"][2]}}
+	<hr />
+	<h2>Filters</h2>
+	uppercase: {{ "to uppercase" | uppercase}}<br>
+	lowercase: {{ "TO LOWERCASE" | lowercase}}<br>
+	currency: {{ 123.456 | currency:"MYCURRENCY%$":5}} (locale currency)<br>
+	currency: {{ 123 | currency}}<br>
+	number: {{ 123 | number:3}} (number of decimals) <br>
+	date (medium): {{12345645646 | date:'medium'}} <br>
+	date (mediumDate): {{12345645646 | date:'mediumDate'}}<br>
+	json: 	{{
+	{
+	a: 1,
+	b:'hola',
+	c:{
+	a:'adios',
+	b:'hellow'
+	}
+	} | json
+	}} <br>
+	
+	<hr />
+	<h3>Sessions</h3>
+	Order by:
+	<select ng-model="sortorder">
+		<option value="name">Name</option>
+		<option value="creatorName">creatorName</option>
+		<option value="level">level</option>
+		<option value="upVoteCount">upVoteCount</option>
+	</select>
+	Show:
+	<select ng-model="query.level">
+		<option value="">All</option>
+		<option value="basic">basic</option>
+		<option value="easy">easy</option>
+		<option value="high">high</option>
+	</select>
+	<select ng-model="query.upVoteCount">
+		<option value="0">0</option>
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+	</select>
+	<ul class="list-unstyled">
+		<li ng-repeat="session in event.sessions | orderBy:sortorder  | filter:query | limitTo:50 "
+			class=" ng-class="well"
+			id="session{{session.id}}"
+			ng-class-odd="'rowOddClass'"
+			ng-class-even="'rowEvenClass'">
+			<div class="row">
+				<div class="well">
+					<div>{{session.name | addingSomeString: "ONE":"TOW"}}</div>
+					<div>{{session.creatorName}}</div>
+					<div>{{session.level}}</div>
+					<p to-html="session.dificulty"></p>
+					
+					<div>
+						<voting-widget upvote="upVoteSession(session)" downvote="downVoteSession(session)" count="session.upVoteCount" name="session.name"></voting-widget>
+					</div>
+				</div>
+			</div>
+			
+		</li>
+	</ul>
+</div>
+</div>
