@@ -1,9 +1,9 @@
 'use strict';
 
-eventsApp.controller('EventController', ['$scope', 'eventData','$log','$anchorScroll', '$routeParams','$route', EventController]);
+eventsApp.controller('EventController', ['$scope', 'eventData','$log','$anchorScroll', '$routeParams','$route','$timeout', EventController]);
 
 
-function EventController(scope, eventData, log,anchorScroll, routeParams, route) {
+function EventController(scope, eventData, log,anchorScroll, routeParams, route, timeout) {
 
 	scope.downVoteSession = DownVoteSession;
 	scope.upVoteSession = UpVoteSession;
@@ -54,7 +54,14 @@ function EventController(scope, eventData, log,anchorScroll, routeParams, route)
 		eventData.getEventWithResourceService(id, success, error);
 	};
     
-    eventData.getEventWithResourceService(routeParams.eventId, success, error);
+    timeout(function() {
+    	//scope.event = $route.current.locals.event;
+        eventData.getEventWithResourceService(routeParams.eventId, success, error);
+    }, route.current.pathParams.delay);
+    
+    console.log(route.current.locals);
+    console.log(route.current.locals.event);
+
     //eventData.getEventWithHttpService(success,error);
 
     function success(data, status, headers, config)
