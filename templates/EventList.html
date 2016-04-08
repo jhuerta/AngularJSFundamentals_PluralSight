@@ -1,35 +1,8 @@
 <div>
 	<h1>Events</h1>
-	<hr>
-	<hr>
-	
-	
-			<div class="well hoverwell" ng-repeat="event in events | orderBy:sortorder">
-			<a href="#/eventdetails/{{event.id}}">Details
-				<div class="row">
-						<span class="span1"> Name: </span>
-						<span class="span1"> {{event.name}} </span>
-					</div>
-					</a>
-				<!-- <div class="row">
-					<span class="span1"> Date: </span>
-					<span class="span1"> {{event.date}} </span>
-				</div>
-
-				<div class="row">
-					<span class="span1"> Time: </span>
-					<span class="span1"> {{event.time}} </span>
-				</div>
-
-				<div class="row">
-					<span class="span1"> Location: </span>
-					<span class="span1"> {{event.location.address}} </span>
-				</div>
-
-				<div class="row">
-					<span class="span1"> &nbsp; </span>
-					<span class="span1"> {{event.location.city}},{{event.location.province}}, </span>
-				</div>*/
-			</div> -->
-		
+	<hr/>
+	<hr/>
+	<div class="well hoverwell" ng-repeat="eventitem in events | orderBy:sortorder">
+	<thumbnail-event my-event="eventitem" ></thumbnail-event>
+</div>
 </div>

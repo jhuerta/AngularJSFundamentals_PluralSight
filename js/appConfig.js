@@ -19,6 +19,11 @@ function appConfig(routing, templateBuilder) {
         controller: 'EventController'
     });
 
+    routing.when('/sampledirective', {
+        templateUrl: 'templates/SampleDirective.html',
+        controller: 'SampleDirectiveController'
+    });
+
     routing.when('/eventdetails/:eventId/:delay', {
         templateUrl: 'templates/EventDetails.html',
         controller: 'EventController',
