@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Directive Compile Sample </title>
+        <link rel="stylesheet" type="text/css" href="./lib/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="./css/app.css">
+    </head>
+    <body ng-app="eventsApp">
+        <!-- <div><talk spanish french> </talk></div> -->
+        
+            
+        <div repeat-x="5" text="{{text}}">{{text}}</div>
+
+        Text to repeat: <input type="text" ng-model="text">
+        <greeting use-this-controller="greetingController"> </greeting>
+        <script src="./lib/jquery/jquery-2.2.1.js"></script>
+        <script src="./lib/angular/angular.js"></script>
+        <script src="./lib/angular/angular-resource.js"></script>
+        <script src="./lib/angular/angular-route.js"></script>
+        <script src="./lib/angular/angular-sanitize.js"></script>
+        <script src="./lib/angular/angular-cookies.js"></script>
+        <script src="./lib/bootstrap/js/bootstrap.js"></script>
+        <script src="./lib/angular/tmhDynamicLocale.js"></script>
+        <script src="./js/app.js"></script>
+        <script src="./js/directives.js"></script>
+        <script src="./js/filters.js"></script>
+        <script src="./js/directives/RepeatX.js"></script>
+        
+        
+    </body>
+</html>
