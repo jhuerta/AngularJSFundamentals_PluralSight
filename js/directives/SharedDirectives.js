@@ -7,6 +7,7 @@ eventsApp.directive('spanish', SpanishDirective)
 
 function Talk() {
     return {
+        priority: -1,
         restrict: 'E',
         replace: true,
         template: "<button class='btn' ng-click='sayHello()'>Say Hello!</button>",
@@ -40,6 +41,8 @@ function SpanishDirective() {
     return {
         restrict: 'A',
         require: 'talk',
+        priority: -1,
+        terminal: true,
         link: function(scope, element, attrs, controller)
         {
             controller.addWord('Hola');
@@ -49,6 +52,7 @@ function SpanishDirective() {
 
 function FrenchDirective() {
     return {
+        priority: -2,
         restrict: 'A',
         require: 'talk',
         link: function(scope, element, attrs, controller)
