@@ -51,19 +51,9 @@ function Greeting() {
 }
 */
 
+'use strict';
+
 // This is using the controller passed as an attribute
-eventsApp.controller('greetingController', ['$scope', 'gravatarUrlBuilder', GreetingController]);
-
-function GreetingController(scope, gravatarBuilder) {
-
-        scope.sayHello =  SayHello;
-
-        function SayHello() {
-            console.log('I say hellO!: ' + gravatarBuilder.buildGravatarUrl("a@gmail.com"));
-        };
-}
-
-
 eventsApp.directive('greeting', Greeting);
 
 function Greeting() {
