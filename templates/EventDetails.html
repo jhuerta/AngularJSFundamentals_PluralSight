@@ -100,8 +100,13 @@
 					<div>{{session.level}}</div>
 					<p to-html="session.dificulty"></p>
 					
-					<div>
-						<voting-widget upvote="upVoteSession(session)" downvote="downVoteSession(session)" count="session.upVoteCount" name="session.name"></voting-widget>
+					<div> The Widgets
+						<voting-widget 
+							attr-to-do-up="upVoteSession(session)" 
+							attr-to-do-down="downVoteSession(session)" 
+							attr-count="session.upVoteCount" 
+							attr-name="session.name">
+						</voting-widget>
 					</div>
 				</div>
 			</div>

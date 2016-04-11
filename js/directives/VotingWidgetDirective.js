@@ -9,10 +9,10 @@ function VotingWidget($compile) {
 		replace: true,
 		templateUrl: './templates/directives/votingWidget.html',
 		scope: {
-			upvote:"&",
-			downvote:"&",
-			count:"=",
-			name:"="
+			upvote:"&attrToDoUp",
+			downvote:"&attrToDoDown",
+			count:"=attrCount",
+			name:"=attrName"
 		}
 	};
 }
