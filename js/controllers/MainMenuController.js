@@ -16,9 +16,7 @@ function MainMenuController(scope, location,to) {
     console.log('search', location.search());
     console.log('hash', location.hash());
     console.log('url', location.url());
-    console.log('---------------------------------------------------------');
-
-    
+    console.log('---------------------------------------------------------');    
 
     function CreateEvent() {
     	console.log('*********');

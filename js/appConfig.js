@@ -23,6 +23,16 @@ function appConfig(routing, templateBuilder) {
         templateUrl: 'templates/SampleDirective.html',
         controller: 'SampleDirectiveController'
     });
+    routing.when('/editprofile', {
+        templateUrl: 'templates/EditProfile.html',
+        controller: 'EditProfileController'
+    });
+
+    
+    routing.when('/editeventdetails', {
+        templateUrl: 'templates/EditEventDetails.html',
+        controller: 'EditEventController'
+    });
 
     routing.when('/eventdetails/:eventId/:delay', {
         templateUrl: 'templates/EventDetails.html',
