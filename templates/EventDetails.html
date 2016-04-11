@@ -94,23 +94,32 @@
 			ng-class-odd="'rowOddClass'"
 			ng-class-even="'rowEvenClass'">
 			<div class="row">
-				<div class="well">
-					<div>{{session.name | addingSomeString: "ONE":"TOW"}}</div>
-					<div>{{session.creatorName}}</div>
-					<div>{{session.level}}</div>
-					<p to-html="session.dificulty"></p>
-					
-					<div> The Widgets
-						<voting-widget 
-							attr-to-do-up="upVoteSession(session)" 
-							attr-to-do-down="downVoteSession(session)" 
-							attr-count="session.upVoteCount" 
+
+				
+
+					<div class="well">
+					<collapsible title={{session.name}}>
+
+						<h1>{{session.name}}</h1>
+						<div>{{session.name | addingSomeString: "ONE":"TOW"}}</div>
+						<div>{{session.creatorName}}</div>
+						<div>{{session.level}}</div>
+						<p to-html="session.dificulty"></p>
+						
+						<div> The Widgets
+							<voting-widget
+							attr-to-do-up="upVoteSession(session)"
+							attr-to-do-down="downVoteSession(session)"
+							attr-count="session.upVoteCount"
 							attr-name="session.name">
-						</voting-widget>
+							</voting-widget>
+						</div>
+						</collapsible>
 					</div>
-				</div>
+
+				
+
 			</div>
-			
 		</li>
 	</ul>
 </div>
