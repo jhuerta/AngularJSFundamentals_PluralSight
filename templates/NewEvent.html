@@ -9,7 +9,7 @@
                     <label for="eventName">Evetn Name:</label>
                     <input class="form-control"  ng-required="true" id="eventName" type="text"  ng-model="event.name">
                     <label for="eventDate">Date:</label>
-                    <input class="form-control" ng-required="true"  ng-pattern="/\d\d/\d\d/\d\d\d\d/" id="eventDate" type="text" ng-model="event.date">
+                    <input class="form-control" ng-required="true"  date-picker ng-pattern="/\d\d/\d\d/\d\d\d\d/" id="eventDate" type="text" ng-model="event.date">
                     <label for="eventTime">Time:</label>
                     <input class="form-control"  id="eventTime" type="text" ng-model="event.time">
                     <label for="eventLocation">Location</label>
@@ -26,3 +26,5 @@
     </div>
     <img ng-src="{{event.image}}" alt="{{event.image}}">
 </div>
+
+
