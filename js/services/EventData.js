@@ -1,25 +1,25 @@
-eventsApp.factory('eventData', ['$http', '$resource', 'sampleCache', EventData]);
+eventsApp.factory('eventData', ['$http', 'dataEventResource', 'sampleCache', EventData]);
 
-function EventData(http, resource, theCache) {
-
-var iisURL = 'data/event/:id';
-var mockableURL = 'http://demo9135925.mockable.io/events/:id';
-
-    var dataResource = resource(mockableURL, {
-        id: '@id'
-
-    },{
-        'get': { method:'GET', cache: false}
-        //'getAllEvents' : { method:'GET', cache: false, isArray:true}
-    });
-
+function EventData(http, dataResource, theCache) {
     return {
-        saveEentWithResourceService: SaveEentWithResourceService,
+        saveEventWithResourceService: SaveEventWithResourceService,
         getEventWithResourceService: GetEventWithResourceService,
         getEventWithHttpService: GetEventWithHttpService,
         getEventWithHardCodeValues: GetEventWithHardCodeValues,
         getAllEvents: GetAllEvents
     };
+
+    function GetEventWithResourceService(eventId, onSuccess, onError) {
+        dataResource.get({
+            id: eventId
+        }, onSuccess, onError);
+    }
+
+    function GetAllEvents(onSuccess, onError) {
+        dataResource.query({
+            id: 'allevents'
+        }, onSuccess, onError);
+    }
 
     function GetEventWithHardCodeValues() {
         return {
@@ -66,27 +66,14 @@ var mockableURL = 'http://demo9135925.mockable.io/events/:id';
         };
     }
 
-    function SaveEentWithResourceService(event, onSuccess, onError) {
+    function SaveEventWithResourceService(event, onSuccess, onError) {
+
         var theEvent = {
             id: event.id,
-            eventData : event
+            eventData: event
         };
 
-
         dataResource.save(theEvent, onSuccess, onError);
-    }
-
-    function GetEventWithResourceService(eventId, onSuccess, onError) {
-        dataResource.get({
-            id: eventId
-        }, onSuccess, onError);
-    }
-
-    function GetAllEvents(onSuccess, onError)
-    {
-        dataResource.query({
-            id: 'allevents'
-        }, onSuccess, onError);
     }
 
     function GetEventWithHttpService(onSuccess, onError) {

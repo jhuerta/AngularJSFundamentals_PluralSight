@@ -9,7 +9,7 @@ function EditEventController(scope, eventData, log) {
 
     function SaveEvent(event, form) {
         if (form.$valid) {
-            eventData.saveEentWithResourceService(event, success, error);
+            eventData.saveEventWithResourceService(event, success, error);
         }
     }
 

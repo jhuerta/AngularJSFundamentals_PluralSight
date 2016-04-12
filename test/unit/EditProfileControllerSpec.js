@@ -5,7 +5,6 @@ describe('EditProfileControllerSpec', EditProfileControllerTest);
 function EditProfileControllerTest() {
     var $controllerConstructor, scope, mockGravatarUrlBuilder;
 
-
     beforeEach(module('eventsApp'));
 
     beforeEach(inject(function($controller, $rootScope) {
