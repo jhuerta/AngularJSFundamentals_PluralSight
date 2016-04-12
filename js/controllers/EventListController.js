@@ -1,5 +1,35 @@
 'use strict';
 
+eventsApp.controller('EventListController', ['$scope','eventData', EventListController]);
+
+function EventListController(scope, eventData) {
+
+    /*
+    scope.loadEvent = LoadEvent;
+
+    function LoadEvent(eventId)
+    {
+        window.location = "#/eventdetails/"+ eventId;
+    }*/
+
+    eventData.getAllEvents(onSuccess, onError);
+
+    function onSuccess(data, status, headers, config)
+    {
+        console.log("++++++++++++++++++++++++++++++");
+        scope.events = data;
+        //log.info('done');
+        //log.info(data);
+    }
+
+    function onError(data, status, headers, config)
+    {
+        //log.warn(data, status, headers, config);
+    }
+}
+
+
+/*
 eventsApp.controller('EventListController', ['$scope', '$location','$log','eventData','$window','$route', EventListController]);
 
 function EventListController(scope, location, log, eventData,window, route) {
@@ -29,3 +59,4 @@ function EventListController(scope, location, log, eventData,window, route) {
     	log.warn(data, status, headers, config);
     }
 }
+*/

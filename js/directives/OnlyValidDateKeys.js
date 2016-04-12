@@ -2,8 +2,6 @@
 
 eventsApp.directive('onlyValidDateKeys', OnlyValidDateKeys);
 
-console.log('bbbbbbbbb');
-
 function OnlyValidDateKeys($compile) {
 
     return {
