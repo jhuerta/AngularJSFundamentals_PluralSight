@@ -1,13 +1,13 @@
 <div>
 	
-	<div class="btn btn-primary btn-xs" ng-click="upvote()">
+	<div class="btn btn-primary btn-xs votingUpButton" ng-click="upvote()">
 		<span class="glyphicon glyphicon-chevron-up"></span>
 	</div>
 	
 	Votes: <p to-html="count | dificultyImage"></p>
 	
-	<div> With filter:
-		<img ng-src="{{count | dificultyImageFileName}}" alt="{{name}}">
+	<div> aaWith filter: <span>{{count}}</span>
+		<img ng-src="{{count | dificultyImageFileName}}" alt="{{name}}" class="countValue">
 	
 	</div>
 	
@@ -17,7 +17,7 @@
 	
 	</div>
 	
-	<div class="btn btn-primary btn-xs" ng-click="downvote()">
+	<div class="btn btn-primary btn-xs votingUpButton" ng-click="downvote()">
 		<span class="glyphicon glyphicon-chevron-down"></span>
 	</div>
 
