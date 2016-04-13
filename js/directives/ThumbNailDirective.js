@@ -2,12 +2,12 @@
 
 eventsApp.directive('thumbnailEvent', ThumbnailEvent);
 
-function ThumbnailEvent($compile) {
+function ThumbnailEvent(/*$compile*/) {
 
 	return{
-		restrict: 'E',
+		restrict: 'AE',
 		replace: true,
-		templateUrl: './templates/directives/eventThumbnail.html',
+		templateUrl: 'templates/directives/eventThumbnail.html',
 		scope: {
 			myEvent: "="
 			//myEvent: "=myEvent"

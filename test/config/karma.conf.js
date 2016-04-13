@@ -12,7 +12,15 @@ module.exports = function(config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
+    //This will be used in case the file path specified in "files" does not math the one used in directives
+    //This is purely for testing directives!
+    /*ngHtml2JsPreprocessor: {
+        //stripPrefix: 'app',
+        prependPrefix: '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++',
+    },*/
+    
 
+    logLevel: config.LOG_DEBUG,
     // list of files / patterns to load in the browser
     files: [
     'lib/angular/angular.js',
@@ -21,7 +29,8 @@ module.exports = function(config) {
     'test/angular-mocks.js',
     'test/sinon-1.15.0.js',
     'js/**/*.js',
-    'test/unit/**/*.js'
+    'test/unit/**/*.js',
+    'templates/directives/*.html'
     ],
 
 
@@ -33,6 +42,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        '**/*.html': ['ng-html2js']
     },
 
 
@@ -74,7 +84,8 @@ module.exports = function(config) {
 
     plugins:[
         'karma-chrome-launcher',
-        'karma-jasmine'
+        'karma-jasmine',
+        'karma-ng-html2js-preprocessor'
     ]
   });
 };
