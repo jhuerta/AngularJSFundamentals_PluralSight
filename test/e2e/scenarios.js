@@ -20,6 +20,9 @@ function eventRegistrtionApp() {
         function verifyNumberOfEventsRetrieved() {
             var list = element.all(by.repeater('eventitem in events'));
             expect(list.count()).toEqual(numberOfEvents);
+
+            var titleElement = element(by.binding('myEvent.name'));
+            expect(titleElement.getText()).toEqual('asdfafaf');
         }
     }
 }
