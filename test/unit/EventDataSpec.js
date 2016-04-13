@@ -10,6 +10,7 @@ function EventDataTest() {
     beforeEach(function() {
         mockDataEventResource = sinon.stub({
             save: function() {},
+            query: function() {},
             get: function() {}
         });
 
@@ -19,8 +20,32 @@ function EventDataTest() {
     });
 
     describe('getEventWithResourceService', GetEventWithResourceServiceTest);
-
     describe('saveEventWithResourceService', SaveEventWithResourceServiceTest);
+    describe('getAllEventsCallCorrectQueryMethod', GetAllEventsCallCorrectQueryMethod);
+
+    function GetAllEventsCallCorrectQueryMethod() {
+
+        var injectedFunction = inject(getAllEventsTest);
+
+        function getAllEventsTest(eventData) {
+            var event = {
+                id: 5
+            };
+            var expectedUsedEvent = {
+                id: event.id,
+                eventData: event
+            };
+            var methodOnSuccess = function() {};
+            var methodOnFailure = function() {};
+
+            eventData.getAllEvents(methodOnSuccess, methodOnFailure);
+
+            expect(mockDataEventResource.query.called).toBe(true);
+        }
+
+        it('should call resource with proper paramters: Id for the event and callbacks for success and error', injectedFunction);
+
+    }
 
     function SaveEventWithResourceServiceTest() {
 
