@@ -7,6 +7,7 @@ function eventRegistrtionApp() {
     describe('details page', detailsPage);
 
     function eventsPage() {
+    	
         it('should have the correct number of events', verifyNumberOfEventsRetrieved);
         it('should have the correct title', verifyTitleOfEvents);
 
